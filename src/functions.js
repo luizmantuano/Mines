@@ -53,15 +53,19 @@ const getNeighbors = (board, row, column) => {
   const rows = [row - 1, row, row + 1];
   const columns = [column - 1, column, column + 1];
   rows.forEach(r => {
-    const difetent = r !== row || c !== column;
-    const validRow = r >= 0 && r < board.length;
-    const validColumn = c >= 0 && c < board[0].length;
-    if (difetent && validRow && validColumn) {
-      neighbors.push(board[r][c]);
-    }
-  });
-  return neighbors;
-};
+    columns.forEach(c => {
+      const diferent = r !== row || c !== column
+      const validRow = r >= 0 && r < board.length
+      const validColumn = c >= 0 && c < board[0].length
+      if (diferent && validRow && validColumn) {
+        neighbors.push(board[r][c])
+      }
+    })
+    
+  })
+  return neighbors
+}
+
 
 const safeNeighborhood = (board, row, column) => {
   const safes = (result, neighbor) => result && !neighbor.mined;
